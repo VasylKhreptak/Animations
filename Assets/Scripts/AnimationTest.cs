@@ -1,5 +1,6 @@
 using Plugins.Animations;
 using Plugins.Animations.Core;
+using Plugins.Animations.Move;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

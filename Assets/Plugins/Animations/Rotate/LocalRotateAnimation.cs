@@ -4,7 +4,7 @@ using Plugins.Animations.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Plugins.Animations
+namespace Plugins.Animations.Rotate
 {
     [Serializable]
     public class LocalRotateAnimation : IAnimation
@@ -22,6 +22,8 @@ namespace Plugins.Animations
         private Tween _tween;
 
         public float Duration => _duration;
+
+        public float Delay => _delay;
 
         public bool IsPlaying => _tween != null && _tween.IsPlaying();
 

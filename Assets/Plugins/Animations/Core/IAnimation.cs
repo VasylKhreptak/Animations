@@ -7,6 +7,8 @@ namespace Plugins.Animations.Core
     {
         public float Duration { get; }
 
+        public float Delay { get; }
+
         public bool IsPlaying { get; }
 
         public void PlayForward(Action onComplete = null);

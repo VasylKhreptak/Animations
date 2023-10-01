@@ -23,6 +23,8 @@ namespace Plugins.Animations
 
         public float Duration => _duration;
 
+        public float Delay => _delay;
+
         public bool IsPlaying => _tween != null && _tween.IsPlaying();
 
         public void PlayForward(Action onComplete = null)
