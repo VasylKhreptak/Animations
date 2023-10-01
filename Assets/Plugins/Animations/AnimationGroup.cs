@@ -6,9 +6,9 @@ namespace Plugins.Animations
 {
     public class AnimationGroup : IAnimation
     {
-        private readonly IAnimation[] _animations;
-
         private float _delay;
+
+        private readonly IAnimation[] _animations;
 
         public AnimationGroup(params IAnimation[] animations)
         {
