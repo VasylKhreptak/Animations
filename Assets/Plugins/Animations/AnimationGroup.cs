@@ -8,6 +8,8 @@ namespace Plugins.Animations
     {
         private readonly IAnimation[] _animations;
 
+        private float _delay;
+
         public AnimationGroup(params IAnimation[] animations)
         {
             _animations = animations;
@@ -57,9 +59,18 @@ namespace Plugins.Animations
         {
             Sequence sequence = DOTween.Sequence();
 
-            foreach (var animation in _animations)
+            sequence.AppendInterval(_delay);
+
+            for (int i = 0; i < _animations.Length; i++)
             {
-                sequence.Join(animation.CreateForwardTween());
+                if (i == 0)
+                {
+                    sequence.Append(_animations[i].CreateForwardTween());
+                }
+                else
+                {
+                    sequence.Join(_animations[i].CreateForwardTween());
+                }
             }
 
             return sequence;
@@ -69,12 +80,28 @@ namespace Plugins.Animations
         {
             Sequence sequence = DOTween.Sequence();
 
-            foreach (var animation in _animations)
+            sequence.AppendInterval(_delay);
+
+            for (int i = 0; i < _animations.Length; i++)
             {
-                sequence.Join(animation.CreateBackwardTween());
+                if (i == 0)
+                {
+                    sequence.Append(_animations[i].CreateBackwardTween());
+                }
+                else
+                {
+                    sequence.Join(_animations[i].CreateBackwardTween());
+                }
             }
 
             return sequence;
+        }
+
+        public IAnimation SetDelay(float delay)
+        {
+            _delay = delay;
+
+            return this;
         }
     }
 }

@@ -1,5 +1,3 @@
-using System;
-using DG.Tweening.Core;
 using Plugins.Animations.Adapters.Core;
 using UnityEngine;
 
@@ -10,5 +8,6 @@ public class Test : MonoBehaviour
 
     private void Awake()
     {
+        
     }
 }
