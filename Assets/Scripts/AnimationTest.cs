@@ -7,13 +7,13 @@ using UnityEngine;
 public class AnimationTest : MonoBehaviour
 {
     [Header("Animations")]
-    [SerializeField] private PunchPositionAnimation _punchPositionAnimation;
+    [SerializeField] private PunchScaleAnimation _punchScaleAnimation;
 
     private IAnimation _animation;
 
     private void Awake()
     {
-        _animation = new AnimationGroup(_punchPositionAnimation);
+        _animation = new AnimationGroup(_punchScaleAnimation);
     }
 
     [Button]
