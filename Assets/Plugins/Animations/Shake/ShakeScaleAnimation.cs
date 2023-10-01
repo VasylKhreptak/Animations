@@ -4,10 +4,10 @@ using Plugins.Animations.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Plugins.Animations.Punch
+namespace Plugins.Animations.Shake
 {
     [Serializable]
-    public class PunchPositionAnimation : IAnimation
+    public class ShakeScaleAnimation : IAnimation
     {
         [Header("References")]
         [SerializeField] private Transform _transform;
@@ -15,11 +15,12 @@ namespace Plugins.Animations.Punch
         [Header("Preferences")]
         [SerializeField] private float _duration = 1f;
         [SerializeField] private float _delay;
-        [SerializeField] private Vector3 _baseLocalPosition;
+        [SerializeField] private Vector3 _baseLocalScale = Vector3.one;
         [SerializeField] private float _force = 1f;
-        [SerializeField] private Vector3 _direction = Vector3.up;
         [SerializeField] private int _vibrato = 10;
-        [SerializeField] private float _elasticity = 1f;
+        [SerializeField] private float _randomness = 90f;
+        [SerializeField] private bool _fadeOut = true;
+        [SerializeField] private ShakeRandomnessMode _randomnessMode = ShakeRandomnessMode.Full;
         [SerializeField] private AnimationCurve _curve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
         private Tween _tween;
@@ -48,32 +49,32 @@ namespace Plugins.Animations.Punch
         {
             Stop();
 
-            _transform.localPosition = _baseLocalPosition;
+            _transform.localScale = _baseLocalScale;
         }
 
         public void SetEndState()
         {
             Stop();
 
-            _transform.localPosition = _baseLocalPosition;
+            _transform.localScale = _baseLocalScale;
         }
 
-        public Tween CreateForwardTween() => CreatePunchPositionTween(_direction * _force);
+        public Tween CreateForwardTween() => CreateShakeScaleTween(_force);
 
-        public Tween CreateBackwardTween() => CreatePunchPositionTween(-_direction * _force);
+        public Tween CreateBackwardTween() => CreateShakeScaleTween(-_force);
 
-        private Tween CreatePunchPositionTween(Vector3 punch)
+        private Tween CreateShakeScaleTween(float force)
         {
             return _transform
-                .DOPunchPosition(punch, _duration, _vibrato, _elasticity)
+                .DOShakeScale(_duration, force, _vibrato, _randomness, _fadeOut, _randomnessMode)
                 .SetDelay(_delay)
                 .SetEase(_curve);
         }
 
         [Button]
-        private void AssignBaseLocalPosition()
+        private void AssignBaseLocalScale()
         {
-            _baseLocalPosition = _transform.localPosition;
+            _baseLocalScale = _transform.localScale;
         }
     }
 }

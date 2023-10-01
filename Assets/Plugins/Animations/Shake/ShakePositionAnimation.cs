@@ -4,10 +4,10 @@ using Plugins.Animations.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Plugins.Animations.Punch
+namespace Plugins.Animations.Shake
 {
     [Serializable]
-    public class PunchPositionAnimation : IAnimation
+    public class ShakePositionAnimation : IAnimation
     {
         [Header("References")]
         [SerializeField] private Transform _transform;
@@ -19,7 +19,9 @@ namespace Plugins.Animations.Punch
         [SerializeField] private float _force = 1f;
         [SerializeField] private Vector3 _direction = Vector3.up;
         [SerializeField] private int _vibrato = 10;
-        [SerializeField] private float _elasticity = 1f;
+        [SerializeField] private float _randomness = 90f;
+        [SerializeField] private bool _fadeOut = true;
+        [SerializeField] private ShakeRandomnessMode _randomnessMode = ShakeRandomnessMode.Full;
         [SerializeField] private AnimationCurve _curve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
         private Tween _tween;
@@ -58,14 +60,14 @@ namespace Plugins.Animations.Punch
             _transform.localPosition = _baseLocalPosition;
         }
 
-        public Tween CreateForwardTween() => CreatePunchPositionTween(_direction * _force);
+        public Tween CreateForwardTween() => CreateShakePositionTween(_direction * _force);
 
-        public Tween CreateBackwardTween() => CreatePunchPositionTween(-_direction * _force);
+        public Tween CreateBackwardTween() => CreateShakePositionTween(-_direction * _force);
 
-        private Tween CreatePunchPositionTween(Vector3 punch)
+        private Tween CreateShakePositionTween(Vector3 punch)
         {
             return _transform
-                .DOPunchPosition(punch, _duration, _vibrato, _elasticity)
+                .DOShakePosition(_duration, punch, _vibrato, _randomness, false, _fadeOut, _randomnessMode)
                 .SetDelay(_delay)
                 .SetEase(_curve);
         }
