@@ -1,20 +1,19 @@
 using Plugins.Animations;
 using Plugins.Animations.Core;
-using Plugins.Animations.Move;
+using Plugins.Animations.Punch;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class AnimationTest : MonoBehaviour
 {
     [Header("Animations")]
-    [SerializeField] private AnchorMoveAnimation _anchorMoveAnimation;
-    [SerializeField] private ScaleAnimation _scaleAnimation;
+    [SerializeField] private PunchPositionAnimation _punchPositionAnimation;
 
     private IAnimation _animation;
 
     private void Awake()
     {
-        _animation = new AnimationGroup(_anchorMoveAnimation, _scaleAnimation);
+        _animation = new AnimationGroup(_punchPositionAnimation);
     }
 
     [Button]
