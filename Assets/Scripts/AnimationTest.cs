@@ -1,13 +1,13 @@
 using Plugins.Animations;
 using Plugins.Animations.Core;
-using Plugins.Animations.Jump;
+using Plugins.Animations.Rotate;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class AnimationTest : MonoBehaviour
 {
     [Header("Animations")]
-    [SerializeField] private AnchorJumpAnimation _baseAnimation;
+    [SerializeField] private RotateAnimation _baseAnimation;
 
     private IAnimation _animation;
 

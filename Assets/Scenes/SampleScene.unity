@@ -614,13 +614,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseAnimation:
-    _rectTransform: {fileID: 1882835446}
+    _transform: {fileID: 0}
     _duration: 1
     _delay: 0
-    _startAnchoredPosition: {x: 0, y: 0}
-    _endAnchoredPosition: {x: 0, y: 0}
-    _jumpPower: 1
-    _jumpCount: 1
+    _startRotation: {x: 0, y: 0, z: 0}
+    _endRotation: {x: 1080, y: 1080, z: 1080}
+    _rotateMode: 0
     _curve:
       serializedVersion: 2
       m_Curve:

@@ -17,7 +17,9 @@ namespace Plugins.Animations.Rotate
         [SerializeField] private float _delay;
         [SerializeField] private Vector3 _startRotation;
         [SerializeField] private Vector3 _endRotation;
+        [SerializeField] private RotateMode _rotateMode = RotateMode.Fast;
         [SerializeField] private AnimationCurve _curve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+
 
         private Tween _tween;
 
@@ -62,7 +64,7 @@ namespace Plugins.Animations.Rotate
         private Tween CreateRotateTween(Vector3 targetRotation)
         {
             return _transform
-                .DORotate(targetRotation, _duration)
+                .DORotate(targetRotation, _duration, _rotateMode)
                 .SetDelay(_delay)
                 .SetEase(_curve);
         }
