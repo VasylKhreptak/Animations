@@ -1,13 +1,13 @@
 using Plugins.Animations;
+using Plugins.Animations.Audio;
 using Plugins.Animations.Core;
-using Plugins.Animations.Move;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class AnimationTest : MonoBehaviour
 {
     [Header("Animations")]
-    [SerializeField] private AnchorMoveYAnimation _baseAnimation;
+    [SerializeField] private VolumeAnimation _baseAnimation;
 
     private IAnimation _animation;
 
@@ -17,32 +17,17 @@ public class AnimationTest : MonoBehaviour
     }
 
     [Button]
-    private void Play()
-    {
-        _animation.PlayForward(() => Debug.Log("Animation completed"));
-    }
+    private void Play() => _animation.PlayForward(() => Debug.Log("Animation completed"));
 
     [Button]
-    private void Stop()
-    {
-        _animation.Stop();
-    }
+    private void Stop() => _animation.Stop();
 
     [Button]
-    private void PlayReversed()
-    {
-        _animation.PlayBackward(() => Debug.Log("Animation completed(Reversed)"));
-    }
+    private void PlayBackward() => _animation.PlayBackward(() => Debug.Log("Animation completed(Reversed)"));
 
     [Button]
-    private void MoveToStartState()
-    {
-        _animation.SetStartState();
-    }
+    private void MoveToStartState() => _animation.SetStartState();
 
     [Button]
-    private void MoveToEndState()
-    {
-        _animation.SetEndState();
-    }
+    private void MoveToEndState() => _animation.SetEndState();
 }
