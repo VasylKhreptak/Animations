@@ -17,6 +17,10 @@ namespace Plugins.Animations.Adapters.Alpha
 
         #endregion
 
-        public override float Value { get => _canvasGroup.alpha; set => _canvasGroup.alpha = value; }
+        public override float Value
+        {
+            get => _canvasGroup.alpha;
+            set => _canvasGroup.alpha = value;
+        }
     }
 }

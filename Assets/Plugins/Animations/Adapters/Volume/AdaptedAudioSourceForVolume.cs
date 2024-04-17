@@ -14,6 +14,10 @@ namespace Plugins.Animations.Adapters.Volume
 
         #endregion
 
-        public override float Value { get => _audioSource.volume; set => _audioSource.volume = value; }
+        public override float Value
+        {
+            get => _audioSource.volume;
+            set => _audioSource.volume = value;
+        }
     }
 }

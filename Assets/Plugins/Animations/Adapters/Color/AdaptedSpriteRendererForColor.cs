@@ -17,6 +17,10 @@ namespace Plugins.Animations.Adapters.Color
 
         #endregion
 
-        public override UnityEngine.Color Value { get => _spriteRenderer.color; set => _spriteRenderer.color = value; }
+        public override UnityEngine.Color Value
+        {
+            get => _spriteRenderer.color;
+            set => _spriteRenderer.color = value;
+        }
     }
 }
